@@ -1,7 +1,10 @@
 const axios = require('axios')
 const {API_KEY} = process.env;
+const {Dog} = require('../models/Dog')
+const {Temperament} = require('../models/Temperament')
 
-async function getDogs(req, res){
+async function getDogs(req, res, next){
+    try {
     let dogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
     .map(dog=>{
       return {
@@ -15,10 +18,14 @@ async function getDogs(req, res){
         height: dog.height
       }
     })
-    res.send(dogs)
+    return dogs
+  } catch(err){
+    next(err)
+  }
 }
 
-async function getTemperaments(req, res){
+async function getTemperaments(req, res, next){
+    try{
     let tempe = [];
     let temperaments = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
     .map(e=>{
@@ -30,17 +37,28 @@ async function getTemperaments(req, res){
     .map(e=>e.temperament);
     temp = temp.map(e => {
       if(e) return e.split(",").map(a=>a.trim())});
-    temp = temp.filter(e=>e).forEach(e=>e.forEach(a=>))
-    // temp = temp.map(s=> s.map(e => {
-    //     if(!tempe.includes(e)) tempe.push(e)
-    // }));
-    res.send(temp)
+    temp.filter(e=>e).forEach(e=>e.forEach((e => {
+          if(!tempe.includes(e)) tempe.push(e)
+      })))
+    return tempe
+    }
+    catch(err){
+      next(err)
+    }
 }
-// temperaments = temperaments.filter(e=>e)
-// temp = temperaments.map(e => e.temperament.split(",").map(a=>a.trim()))
+
+function chargeTemperaments(){
+  let temperaments = getTemperaments();
+  return Temperament.bulkCreate(temperaments)
+        .then(res => res.send(res))
+        .catch(err => console.log(err))
+}
+
+
 
 
 module.exports={
     getDogs,
-    getTemperaments
+    getTemperaments,
+    chargeTemperaments
 }
