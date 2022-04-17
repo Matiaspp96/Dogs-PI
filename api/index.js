@@ -18,6 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
+const { chargeTemperaments, getTemperaments } = require('./src/controllers/getDogs.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.

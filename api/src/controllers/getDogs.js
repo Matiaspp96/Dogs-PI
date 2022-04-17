@@ -1,10 +1,9 @@
 const axios = require('axios')
 const {API_KEY} = process.env;
-const {Dog} = require('../models/Dog')
-const {Temperament} = require('../models/Temperament')
+const {Dog, Temperament} = require('../db')
 
 async function getDogs(req, res, next){
-    try {
+  try {
     let dogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
     .map(dog=>{
       return {
@@ -25,33 +24,37 @@ async function getDogs(req, res, next){
 }
 
 async function getTemperaments(req, res, next){
-    try{
-    let tempe = [];
-    let temperaments = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
-    .map(e=>{
-      return {
-        temperament: e.temperament,
+      try{
+      let temperaments = [];
+      let temperamentsAPI = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
+      .map(e=>{
+        return {
+          temperament: e.temperament,
+        }
+      });
+      let temp = temperamentsAPI.filter(e=>e)
+      .map(e=>e.temperament)
+      .map(e => {
+        if(e) return e.split(",").map(a=>a.trim())});
+      temp.filter(e=>e).forEach(e=>e.forEach((e => {
+            if(!temperaments.includes(e)) temperaments.push(e)
+        })))
+      let newTemps = temperaments.map(a=>{
+        let temperament = {
+          temperament: a
+        }
+        return temperament
+      })
+      await Temperament.bulkCreate(newTemps)
+      return res.json(await Temperament.findAll({
+          order: [
+            ['temperament', 'ASC']
+          ]
+      }))
+    }
+      catch(err){
+        next(err)
       }
-    });
-    let temp = temperaments.filter(e=>e)
-    .map(e=>e.temperament);
-    temp = temp.map(e => {
-      if(e) return e.split(",").map(a=>a.trim())});
-    temp.filter(e=>e).forEach(e=>e.forEach((e => {
-          if(!tempe.includes(e)) tempe.push(e)
-      })))
-    return tempe
-    }
-    catch(err){
-      next(err)
-    }
-}
-
-function chargeTemperaments(){
-  let temperaments = getTemperaments();
-  return Temperament.bulkCreate(temperaments)
-        .then(res => res.send(res))
-        .catch(err => console.log(err))
 }
 
 
@@ -60,5 +63,4 @@ function chargeTemperaments(){
 module.exports={
     getDogs,
     getTemperaments,
-    chargeTemperaments
 }
