@@ -21,12 +21,12 @@ router.get("/", async(req,res,next) =>{
     }
 })
 
-router.get('/:idRaza', async(req,res,next) => {
-    const {idRaza} = req.params
+router.get('/:idBreed', async(req,res,next) => {
+    const {idBreed} = req.params
     try{
         const dogsApi = await getDogs();
-        if(idRaza){
-            const dogId = await dogsApi.filter(e => e.id == idRaza)
+        if(idBreed){ //<32 dogAPI : dogDB
+            const dogId = await dogsApi.filter(e => e.id == idBreed)
             dogId ? res.status(200).json(dogId) : res.status(404).json({message: 'Not found breed'})
         }
     } catch(err){

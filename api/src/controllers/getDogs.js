@@ -13,8 +13,8 @@ async function getDogs(req, res, next){
         temperament: dog.temperament,
         life_span: dog.life_span,
         image: dog.image.url,
-        weight: dog.weight,
-        height: dog.height
+        weight: dog.weight.metric,
+        height: dog.height.metric
       }
     })
     return dogs
