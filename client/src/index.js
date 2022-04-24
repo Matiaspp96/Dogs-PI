@@ -1,17 +1,21 @@
-import * as ReactDOMClient from 'react-dom/client';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const container = document.getElementById('root');
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import store from './redux/store'
 
 // Create a root.
-const root = ReactDOMClient.createRoot(container);
-
-// Initial render: Render an element to the root.
-root.render(<App tab="home" />);
-
-// During an update, there's no need to pass the container again.
-root.render(<App tab="profile" />);
+createRoot(
+    document.getElementById('root')
+).render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
