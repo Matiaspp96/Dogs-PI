@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import Create from './components/Create';
-import Home from './components/Home';
+import AllDogs from './components/AllDogs';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <Route path='/' ><NavBar /></Route>
       <Switch>
       <Route path='/dogs' >
-        <Home />
+        <AllDogs />
       </Route>
       <Route path='/create' >
         <Create />
