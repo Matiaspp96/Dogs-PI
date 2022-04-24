@@ -8,7 +8,7 @@ router.post('/', async(req,res,next) => {
     const { name, height_max, height_min, weight_max, weight_min, life_span, image, temperament} = req.body;
     if(!image){
         try{
-            imagea = (await axios.get(`https://random.dog/woof.json`)).data.url
+            img = (await axios.get(`https://dog.ceo/api/breeds/image/random`)).data.message
         }catch(err){
             console.log(err)
         }
@@ -22,9 +22,9 @@ router.post('/', async(req,res,next) => {
             weight_max: parseInt(weight_max),
             weight_min: parseInt(weight_min),
             life_span,
-            image: imagea
+            image: img
         });
-        let temperamentDB = await Temperament.findAll({ where: { temperament } })
+        const temperamentDB = await Temperament.findAll({ where: { temperament: temperament } })
         await newDog.addTemperament(temperamentDB)
         return res.json(newDog)
     } catch(err){

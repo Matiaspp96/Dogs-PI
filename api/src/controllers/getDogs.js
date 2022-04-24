@@ -2,7 +2,7 @@ const axios = require('axios')
 const {API_KEY} = process.env;
 const {Dog, Temperament} = require('../db');
 
-async function getDogsAPI(req, res, next){
+async function getDogsAPI(){
   try {
     let dogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
     .map(dog=>{
@@ -13,14 +13,15 @@ async function getDogsAPI(req, res, next){
         temperament: dog.temperament,
         life_span: dog.life_span,
         image: dog.image.url,
-        weight_max: dog.weight.metric,
-        weight_min: dog.weight.metric,
-        height: dog.height.metric
+        height_max: parseInt(dog.height.metric.slice(4).trim()),
+        height_min: parseInt(dog.height.metric.slice(0, 2).trim()),
+        weight_max: parseInt(dog.weight.metric.slice(4).trim()),
+        weight_min: parseInt(dog.weight.metric.slice(0,2).trim()),
       }
     })
     return dogs
   } catch(err){
-    next(err)
+    console.log(err)
   }
 }
 
@@ -40,38 +41,41 @@ async function getDogsDB(){
 async function getAllDogs(){
   const dogsDb = await getDogsDB();
   const dogsApi = await getDogsAPI();
-  const allDogs = await dogsApi.concat(dogsDb);
+  const allDogs = await dogsDb.concat(dogsApi);
   return allDogs;
 }
 
 async function getTemperaments(req, res, next){
       try{
-      let temperaments = [];
-      let temperamentsAPI = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
-      .map(e=>{
-        return {
-          temperament: e.temperament,
-        }
-      });
-      let temp = temperamentsAPI.filter(e=>e)
-      .map(e=>e.temperament)
-      .map(e => {
-        if(e) return e.split(",").map(a=>a.trim())});
-      temp.filter(e=>e).forEach(e=>e.forEach((e => {
-            if(!temperaments.includes(e)) temperaments.push(e)
-        })))
-      let newTemps = temperaments.map(a=>{
-        let temperament = {
-          temperament: a
-        }
-        return temperament
-      })
-      await Temperament.bulkCreate(newTemps)
-      return res.json(await Temperament.findAll({
+      let tempDb = await Temperament.findAll();
+      if(!tempDb.length){
+        let temperaments = [];
+        let temperamentsAPI = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
+        .map(e=>{
+          return {
+            temperament: e.temperament,
+          }
+        });
+        let temp = temperamentsAPI.filter(e=>e)
+        .map(e=>e.temperament)
+        .map(e => {
+          if(e) return e.split(",").map(a=>a.trim())});
+        temp.filter(e=>e).forEach(e=>e.forEach((e => {
+              if(!temperaments.includes(e)) temperaments.push(e)
+          })))
+        let newTemps = temperaments.map(a=>{
+          let temperament = {
+            temperament: a
+          }
+          return temperament
+        })
+        await Temperament.bulkCreate(newTemps)
+      }
+        return res.json(await Temperament.findAll({
           order: [
             ['temperament', 'ASC']
           ]
-      }))
+        }))      
     }
       catch(err){
         next(err)
@@ -81,7 +85,10 @@ async function getTemperaments(req, res, next){
 
 
 
+
 module.exports={
-    getAllDogs,
+    getDogsAPI,
     getTemperaments,
+    getAllDogs,
+    getDogsDB
 }

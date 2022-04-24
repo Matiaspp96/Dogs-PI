@@ -1,9 +1,20 @@
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Create from './components/Create';
+import Home from './components/Home';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Dogs</h1>
+    <div>
+      <Route path='/' ><NavBar /></Route>
+      <Switch>
+      <Route path='/dogs' >
+        <Home />
+      </Route>
+      <Route path='/create' >
+        <Create />
+      </Route>
+      </Switch>
     </div>
   );
 }
