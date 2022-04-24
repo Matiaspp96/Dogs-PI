@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { Router } = require('express');
-const {getAllDogs} = require('../controllers/getDogs');
-const {Dog, Temperament} = require('../db');
+const {getDogsAPI, getAllDogs} = require('../controllers/getDogs');
 
 
 const router = Router();
@@ -12,7 +11,7 @@ router.get("/", async(req,res,next) =>{
         let dogs = await getAllDogs()
         if(name){
             const dog = dogs.filter(e => e.name.toLowerCase().includes(name.toLocaleLowerCase()))
-            dog.length > 0 ? res.status(200).json(dog) : res.status(404).send('Breed not found')
+            dog.length > 0 ? res.status(200).json(dog) : res.status(404).send('Dog not found')
         } else {
             res.status(200).json(dogs)
         }
@@ -33,6 +32,7 @@ router.get('/:idBreed', async(req,res,next) => {
         next(err)
     }
 })
+
 
 
 module.exports=router;
