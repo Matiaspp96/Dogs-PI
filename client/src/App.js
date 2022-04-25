@@ -1,15 +1,19 @@
 import { Route, Switch } from 'react-router-dom';
 import Create from './components/Create';
-import AllDogs from './components/AllDogs';
+import Home from './components/Home';
+import Landing from './components/Landing';
 import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div>
-      <Route path='/' ><NavBar /></Route>
       <Switch>
+      <Route exact path='/'>
+        <Landing />
+      </Route>
       <Route path='/dogs' >
-        <AllDogs />
+        <NavBar/>
+        <Home />
       </Route>
       <Route path='/create' >
         <Create />
