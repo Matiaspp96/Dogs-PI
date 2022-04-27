@@ -13,14 +13,14 @@ function Home(){
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(8);
 
-    const maxPerPage = Math.ceil(dogs.length / perPage);
+    const maxPage = Math.ceil(dogs.length / perPage);
 
 
 
     return(
         <div>
             All Breeds
-            <Pagination page={page} setPage={setPage} maxPerPage={maxPerPage} />
+            <Pagination page={page} setPage={setPage} maxPage={maxPage} />
             {
                 dogs&&dogs
                 .slice((page - 1) * perPage,
