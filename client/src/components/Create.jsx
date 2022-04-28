@@ -40,6 +40,13 @@ export default function Create(){
             })
         }
     }
+    
+    function handleDelete(event){
+        setDog({
+            ...dog,
+            temperament: dog.temperament.filter(temp => temp !== event)
+        })
+    }
 
     function handleSubmit(event){
         event.preventDefault();
@@ -61,12 +68,6 @@ export default function Create(){
         }
     }
     
-    function handleDelete(event){
-        setDog({
-            ...dog,
-            temperament: dog.temperament.filter(temp => temp !== event)
-        })
-    }
 
     return(
         <div>
@@ -78,21 +79,18 @@ export default function Create(){
                 <label > Height Max. <input type="text" name='height_max' value={dog.height_max} onChange={e=>handleChange(e)}/></label>
                 <label > Height Min. <input type="text" name='height_min' value={dog.height_min} onChange={e=>handleChange(e)}/></label>
                 <label > Life-Span <input type="text" name='life_span' value={dog.life_span} onChange={e=>handleChange(e)}/></label>
-                {!temperaments ? null : <label>Temperaments
+                {!temperaments ? null : <div>Temperaments
                 <select onChange={e=>handleTemperaments(e)} >
                 {temperaments.map((e,i)=>{
                     return <option value={e.temperament} key={i} >{e.temperament}</option> 
                 })}
-                {
-                    dog.temperament.length < 3 ? <span> Select 3 temperament</span> : null
-                }   
-                </select></label>}
+                </select></div>}
                 <div>
-                    {!dog.temperament ? null : dog.temperament.map((e,i) =>{
+                    {dog.temperament.map((e,i) =>{
                         return(
-                            <article key={i}><p>{e}</p>
-                            <button value={e} onClick={e=>handleDelete(e)}>x</button>
-                            </article>
+                            <div key={i}><p>{e}</p>
+                            <button type="button" key={i} value={e} onClick={()=>handleDelete(e)}>x</button>
+                            </div>
                         )})}
                 </div>
                 <label > Image <input type="text" name='image' value={dog.image} onChange={e=>handleChange(e)}/></label>

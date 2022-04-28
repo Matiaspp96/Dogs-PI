@@ -1,13 +1,14 @@
 import {
     GET_DOGS,
     GET_TEMPERAMENTS,
-    GET_DOGS_BY_NAME
+    GET_DOGS_BY_NAME,
+    GET_DETAIL_DOG
 } from './actions';
 
 let initialState = {
     dogs: [],
     temperaments: [],
-    dog: {},
+    dogDetail: [],
 }
 
 export function reducer(state = initialState, action){
@@ -26,6 +27,11 @@ export function reducer(state = initialState, action){
             return {
                 ...state,
                 dogs: action.payload
+            }}
+        case GET_DETAIL_DOG:{
+            return {
+                ...state,
+                dogDetail: action.payload
             }}
         default: return state
     }

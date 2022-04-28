@@ -5,7 +5,7 @@ const {Dog, Temperament} = require('../db');
 const router = Router();
 
 router.post('/', async(req,res,next) => {
-    const { name, height_max, height_min, weight_max, weight_min, life_span, image, temperament} = req.body;
+    const { name, height_max, height_min, weight_max, weight_min, life_span, image, temperament } = req.body;
     if(!image){
         try{
             img = (await axios.get(`https://dog.ceo/api/breeds/image/random`)).data.message
@@ -25,7 +25,10 @@ router.post('/', async(req,res,next) => {
             image: img
         });
         const temperamentDB = await Temperament.findAll({ where: { temperament: temperament } })
+        console.log(temperamentDB)
+        console.log(temperament)
         await newDog.addTemperament(temperamentDB)
+        console.log(newDog)
         return res.json(newDog)
     } catch(err){
         next(err)
