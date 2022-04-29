@@ -4,6 +4,8 @@ export const GET_DOGS = 'GET_DOGS'
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS'
 export const GET_DOGS_BY_NAME = 'GET_DOGS_BY_NAME'
 export const GET_DETAIL_DOG = 'GET_DETAIL_DOG'
+export const ORDER_BY_CREATED = 'ORDER_BY_CREATED'
+export const ORDER_BY_TEMPERAMENT = 'ORDER_BY_TEMPERAMENT'
 
 export function getAllDogs(){
     return function (dispatch){
@@ -43,5 +45,20 @@ export function createDog(dog){
         axios.post('http://localhost:3001/dog', dog)
         .then(res => res.data)
         .catch(err => console.log(err))
+    }
+}
+
+
+export function filterByTemperaments(payload){
+    return{
+        type: ORDER_BY_TEMPERAMENT ,
+        payload
+    }
+} 
+
+export function filterByCreated(payload){
+    return {
+        type: ORDER_BY_CREATED ,
+        payload
     }
 } 

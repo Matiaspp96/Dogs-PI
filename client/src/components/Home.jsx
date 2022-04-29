@@ -7,7 +7,7 @@ import Pagination from './Pagination'
 
 function Home(){
     const dispatch = useDispatch()
-    const dogs = useSelector(state => state.dogs)
+    const dogs = useSelector(state => state.allDogs)
     useEffect(()=>{
         dispatch(getAllDogs())
     }, [dispatch])
@@ -29,7 +29,7 @@ function Home(){
                 (page - 1) * perPage + perPage)
                 .map(breed => {
                     return(
-                        <Link style={{textDecoration:"none" , color:"black"}} key={breed.id} to={`/dogs/${breed.id}`}>
+                        <Link style={{textDecoration:"none"}} key={breed.id} to={`/dogs/${breed.id}`}>
                             <Card 
                             id={breed.id}
                             name={breed.name}

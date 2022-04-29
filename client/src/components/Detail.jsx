@@ -23,10 +23,8 @@ export default function Detail() {
       <div>
         <img src={dog.image} alt={dog.name} />
         <h1>{dog.name}</h1>
-        <p>Weight Max.: {dog.height_max} cm</p>
-        <p>Weight Max.: {dog.height_min} cm</p>
-        <p>Weight Max.: {dog.weight_max} kg</p>
-        <p>Weight Max.: {dog.weight_min} kg</p>
+        <p>Weight: {dog.height_max} cm  - {dog.height_min} cm</p>
+        <p>Weight Max.: {dog.weight_max} kg - {dog.weight_min} kg</p>
         <p>Life Span: {dog.life_span}</p>
         <p>Temperamentos: </p>
         <p>{dog.createdInDB ? dog.temperaments.map(e => e.temperament).join(", "):
