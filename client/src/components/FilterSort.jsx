@@ -8,9 +8,9 @@ export default function FilterSort() {
     let [temp, setTemp] = useState([]);
 
     useEffect(()=>{
-        dispatch(getAllDogs());
+        // dispatch(filterByTemperaments(temp[0]))
         dispatch(getAllTemperaments());
-    }, [dispatch]);
+    }, [dispatch, temp]);
 
     function handleFilterByTemperament(event){
         event.preventDefault();
@@ -25,10 +25,18 @@ export default function FilterSort() {
         dispatch(filterByCreated(event.target.value))
     }
 
-    function handleDelete(){
+    async function handleDelete(event){
         setTemp(
-            temp = []
+            temp = temp.filter(e => event.target.value !== e)
         )
+        if(!temp.length){dispatch(getAllDogs())}
+        // if(temp.length){
+        //     let firstTemperament = await temp[0]
+        //     console.log(firstTemperament)
+        //     dispatch(filterByTemperaments(firstTemperament))
+        // }
+    }
+    function handleRefresh(){
         dispatch(getAllDogs())
     }
 
@@ -52,13 +60,13 @@ export default function FilterSort() {
             <option value="dogsApi">Dogs DB</option>
             <option value="dogsDb">Yours Dogs</option>
             </select>
-            {temp && temp.map(temperament => {
+            {temp && temp.map((temperament,i) => {
                 return(
-                    <div>
+                    <button key={i} value={temperament} onClick={(e)=>handleDelete(e)}>
                         {temperament}
-                    </div>
+                    </button>
                 )})}
-            <button type="button" onClick={()=>handleDelete()} >Clear Filters</button>
+            <button type="button" onClick={()=>handleRefresh()} >Clear Filters</button>
         </div>
     </div>
   )

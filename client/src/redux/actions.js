@@ -4,8 +4,10 @@ export const GET_DOGS = 'GET_DOGS'
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS'
 export const GET_DOGS_BY_NAME = 'GET_DOGS_BY_NAME'
 export const GET_DETAIL_DOG = 'GET_DETAIL_DOG'
-export const ORDER_BY_CREATED = 'ORDER_BY_CREATED'
-export const ORDER_BY_TEMPERAMENT = 'ORDER_BY_TEMPERAMENT'
+export const FILTER_BY_CREATED = 'FILTER_BY_CREATED'
+export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT'
+export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
+export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 
 export function getAllDogs(){
     return function (dispatch){
@@ -51,14 +53,27 @@ export function createDog(dog){
 
 export function filterByTemperaments(payload){
     return{
-        type: ORDER_BY_TEMPERAMENT ,
+        type: FILTER_BY_TEMPERAMENT ,
         payload
     }
 } 
 
 export function filterByCreated(payload){
     return {
-        type: ORDER_BY_CREATED ,
+        type: FILTER_BY_CREATED ,
+        payload
+    }
+
+} 
+export function orderByWeight(payload){
+    return {
+        type: ORDER_BY_WEIGHT ,
+        payload
+    }
+} 
+export function orderByName(payload){
+    return {
+        type: ORDER_BY_NAME ,
         payload
     }
 } 
