@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700&display=swap');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    outline: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat';
+}
+
+@media only screen and (max-width: 640px){
+    .container{
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(143, 100, 108);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .title {
+        position: absolute;
+        left: 10%;
+        top: 5%;
+    
+        font-style: normal;
+        font-weight: 700;
+        width:min-content;
+    
+        color: #DCDCDD;
+        font-size: 4em;
+        line-height: 1;
+    }
+    
+    .subtitle{
+        font-size: 0.5em;
+        width: 1em;
+    }
+    
+    .span{
+        color: #1b55ab;
+    }
+    
+    .btn{
+        position: absolute;
+        bottom: 30%;
+        left: 20%;
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #1b55ab;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    
+    .btn:hover {
+        background-color: #1b55ab;
+        box-shadow: 0px 15px 20px rgba(46, 122, 229, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+    }
+    
+    .btn:active {
+        transform: translateY(-1px);
+    }    
+}
+
+@media only screen and (min-width: 640px){
+    .container{
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(228, 60, 91);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .title {
+        position: absolute;
+        left: 28.5%;
+        top: 15%;
+    
+        font-style: normal;
+        font-weight: 700;
+    
+        color: #DCDCDD;
+        font-size: 4em;
+        line-height: 0.6;
+    }
+    
+    .subtitle{
+        font-size: 0.5em;
+    }
+    
+    .span{
+        color: #1b55ab;
+    }
+    
+    .btn{
+        position: absolute;
+        bottom: 15%;
+        left: 47%;
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #1b55ab;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    
+    .btn:hover {
+        background-color: #1b55ab;
+        box-shadow: 0px 15px 20px rgba(46, 122, 229, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+    }
+    
+    .btn:active {
+        transform: translateY(-1px);
+    }    
+}
+

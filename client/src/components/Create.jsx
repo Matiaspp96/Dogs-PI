@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {createDog, getAllTemperaments} from '../redux/actions'
+import Header from './Header'
 
 export default function Create(){
     const dispatch = useDispatch()
@@ -71,7 +72,8 @@ export default function Create(){
 
     return(
         <div>
-            <Link to='/dogs'>Home</Link>
+            <Header/>
+            <Link to='/dogs'>Back</Link>
             <form onSubmit={e=>handleSubmit(e)} type="submit">
                 <label > Name Breed <input onChange={e=>handleChange(e)} type="text" id='name' name='name' placeholder='Breed...' /></label>
                 <label > Weight Max. <input type="text" name='weight_max' value={dog.weight_max} onChange={e=>handleChange(e)}/></label>

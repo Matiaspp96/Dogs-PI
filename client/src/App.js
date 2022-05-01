@@ -3,11 +3,11 @@ import Create from './components/Create';
 import Detail from './components/Detail';
 import Home from './components/Home';
 import Landing from './components/Landing';
-import NavBar from './components/NavBar';
+import s from './App.css'
 
 function App() {
   return (
-    <div>
+    <div className={s.App}>
       <Switch>
       <Route exact path='/'>
         <Landing />
@@ -16,7 +16,6 @@ function App() {
         <Detail/>
       </Route>
       <Route path='/dogs' >
-        <NavBar/>
         <Home />
       </Route>
       <Route path='/create' >

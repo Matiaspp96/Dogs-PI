@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { filterByCreated, filterByTemperaments, getAllDogs, getAllTemperaments } from '../redux/actions';
+import { filterByCreated, filterByTemperaments, getAllDogs, getAllTemperaments, orderByName, orderByWeight } from '../redux/actions';
 
 export default function FilterSort() {
     const dispatch = useDispatch();
@@ -40,6 +40,16 @@ export default function FilterSort() {
         dispatch(getAllDogs())
     }
 
+    function handleOrderByWeight(event){
+        event.preventDefault();
+        dispatch(orderByWeight(event.target.value))
+    }
+
+    function handleOrderByName(event){
+        event.preventDefault();
+        dispatch(orderByName(event.target.value))
+    }
+
 
   return (
     <div>
@@ -56,7 +66,6 @@ export default function FilterSort() {
         </div>
         <div>
             <select onChange={e => handleFilterByCreated(e)} >
-            <option value=""></option>
             <option value="dogsApi">Dogs DB</option>
             <option value="dogsDb">Yours Dogs</option>
             </select>
@@ -67,6 +76,17 @@ export default function FilterSort() {
                     </button>
                 )})}
             <button type="button" onClick={()=>handleRefresh()} >Clear Filters</button>
+        </div>
+        <div>
+            <h3>Order by:</h3>
+            <select onChange={e => handleOrderByWeight(e)}>
+                <option value="desc">Max - Min</option>
+                <option value="asc">Min - Max</option>
+            </select>
+            <select onChange={e => handleOrderByName(e)}>
+                <option value="asc">A - Z</option>
+                <option value="desc">Z - A</option>
+            </select>
         </div>
     </div>
   )

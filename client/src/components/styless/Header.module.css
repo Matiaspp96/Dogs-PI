@@ -1,0 +1,10 @@
+.header{    
+    background-color: #CACACA;
+}
+
+.title{
+    position:fixed;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
