@@ -1,0 +1,30 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.input{
+    box-sizing: border-box;
+    max-width: 5em;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: .3s ease;
+}
+
+.input::placeholder {
+    color: #9e9ea7;
+}
+
+.input:focus, input:hover {
+    outline: none;
+    border-color: #1b55ab;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(13, 37, 105, 0.1);
+}

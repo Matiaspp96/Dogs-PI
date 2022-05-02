@@ -1,0 +1,22 @@
+.content{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 40px 1fr 1fr; 
+    grid-template-areas: "pagination pagination pagination pagination"
+    "dogs_cards dogs_cards dogs_cards dogs_cards"
+    "dogs_cards dogs_cards dogs_cards dogs_cards";
+}
+
+.pagination{
+    grid-area: pagination;
+}
+
+.dogs_cards{
+    grid-area: dogs_cards;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    row-gap: 5px;
+}

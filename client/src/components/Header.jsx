@@ -5,7 +5,7 @@ import s from './styless/Header.module.css'
 export default function Header() {
   return (
     <div className={s.header}>
-        <Link to='/dogs' className={s.title}>Home</Link>
+        <Link to='/dogs' className={s.title}>Dog App</Link>
     </div>
   )
 }

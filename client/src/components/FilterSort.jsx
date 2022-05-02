@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterByCreated, filterByTemperaments, getAllDogs, getAllTemperaments, orderByName, orderByWeight } from '../redux/actions';
+import s from './styless/FilterSort.module.css'
 
 export default function FilterSort() {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ export default function FilterSort() {
     }
     function handleRefresh(){
         dispatch(getAllDogs())
+        setTemp([])
     }
 
     function handleOrderByWeight(event){
@@ -52,9 +54,9 @@ export default function FilterSort() {
 
 
   return (
-    <div>
-        <h2>Filter by:</h2>
-        <div>
+    <div className={s.content}>
+        <div className={s.filter}>
+        <p className={s.title}>Filter by</p>
             <select onChange={e => handleFilterByTemperament(e)} >
             <option value="filterByTemp">Temperaments</option>
             {temperaments && temperaments.map((e,i) => {
@@ -63,31 +65,29 @@ export default function FilterSort() {
                 )
             })}
             </select>
-        </div>
-        <div>
             <select onChange={e => handleFilterByCreated(e)} >
             <option value="dogsApi">Dogs DB</option>
             <option value="dogsDb">Yours Dogs</option>
             </select>
             {temp && temp.map((temperament,i) => {
                 return(
-                    <button key={i} value={temperament} onClick={(e)=>handleDelete(e)}>
+                    <button className={s.item} key={i} value={temperament} onClick={(e)=>handleDelete(e)}>
                         {temperament}
                     </button>
                 )})}
-            <button type="button" onClick={()=>handleRefresh()} >Clear Filters</button>
         </div>
-        <div>
-            <h3>Order by:</h3>
-            <select onChange={e => handleOrderByWeight(e)}>
-                <option value="desc">Max - Min</option>
-                <option value="asc">Min - Max</option>
-            </select>
+        <div className={s.sort}>
+            <p className={s.title}>Order by</p>
             <select onChange={e => handleOrderByName(e)}>
                 <option value="asc">A - Z</option>
                 <option value="desc">Z - A</option>
             </select>
+            <select onChange={e => handleOrderByWeight(e)}>
+                <option value="desc">Max weight - Min</option>
+                <option value="asc">Min weight - Max</option>
+            </select>
         </div>
+        <button className={s.btn} type="button" onClick={()=>handleRefresh()} >Remove Filters</button>
     </div>
   )
 }

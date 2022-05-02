@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import s from './styless/Pagination.module.css'
 
 const Pagination = ({page,setPage,maxPage}) => {
     const [input, setInput] = useState(1);
@@ -38,12 +39,12 @@ const Pagination = ({page,setPage,maxPage}) => {
 
 
   return (
-    <div>
+    <div className={s.content}>
         <button onClick={previousPage} disabled={ page < 1 || page === 1} >◄</button>
-        <input onChange={e=> handleChange(e)} onKeyDown={e=> handleKeyDown(e)} value={input} name='page' autoComplete='off' />
+        <input className={s.input} onChange={e=> handleChange(e)} onKeyDown={e=> handleKeyDown(e)} value={input} name='page' autoComplete='off' />
         <p>de {maxPage}</p>
         <button onClick={nextPage} disabled={ page > maxPage || page === maxPage} >►</button>
-        </div>
+    </div>
   )
 }
 

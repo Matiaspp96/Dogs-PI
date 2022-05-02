@@ -1,4 +1,31 @@
 .Body{
     display: grid;
-    grid-template-rows: 20px 30px;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 60px 90px 1fr;
+    grid-template-areas: 
+    "header header header header"
+    "navbar navbar navbar navbar"
+    "dog_area dog_area dog_area dog_area"
+    ;
+}
+
+.header{
+    grid-area: header;
+}
+
+.navbar{
+    grid-area: navbar;
+}
+
+.dog_area{
+    grid-area: dog_area;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer{
+    grid-area: footer;
 }
