@@ -14,16 +14,19 @@
     font-family: 'Montserrat';
 }
 
+
 @media only screen and (max-width: 640px){
     .container{
         position: absolute;
         z-index: -1;
         width: 100%;
         height: 100%;
-        background-color: rgb(143, 100, 108);
+        background-color: rgb(228, 60, 91);
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    
     
     .title {
         position: absolute;
@@ -80,20 +83,42 @@
     }    
 }
 
+
 @media only screen and (min-width: 640px){
     .container{
         position: absolute;
-        z-index: -1;
         width: 100%;
         height: 100%;
-        background-color: rgb(228, 60, 91);
-        background-repeat: no-repeat;
+        animation: animate 20s ease-in-out infinite;
         background-size: cover;
     }
+
+    @keyframes animate {
+        0%, 100%{
+            background-image: url('../../../public/1-background.jpg');
+        }
+        33%{
+            background-image: url('../../../public/2-background.jpg');
+        }
+        66%{
+            background-image: url('../../../public/3-background.jpg');
+        }
+    }
     
+    .outer{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .title {
         position: absolute;
-        left: 28.5%;
         top: 15%;
     
         font-style: normal;
@@ -109,13 +134,13 @@
     }
     
     .span{
-        color: #1b55ab;
+        text-shadow: 5px 5px 5px #1f2525;
+        color: #0960bc;
     }
     
     .btn{
         position: absolute;
-        bottom: 15%;
-        left: 47%;
+        top: 80%;
         padding: 1.3em 3em;
         font-size: 12px;
         text-transform: uppercase;

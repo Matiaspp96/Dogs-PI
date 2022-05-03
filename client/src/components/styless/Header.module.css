@@ -1,6 +1,8 @@
 .header{    
     height: 100%;
-    background-color: #CACACA;
+    background: #1488CC;
+    background: -webkit-linear-gradient(to right, #2671ae, #1488CC);
+    background: linear-gradient(to right, #2671ae, #1488CC); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,4 +11,5 @@
 .title{
     font-size: 1.8em;
     font-weight: 700;
+    color: #EEEEEE;
 }
