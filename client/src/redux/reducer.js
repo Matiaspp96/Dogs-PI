@@ -44,6 +44,10 @@ export function reducer(state = initialState, {type, payload}){
                 if(elem.temperament){
                     return elem.temperament.includes(payload)
                 } else if (elem.temperaments){
+                    if(typeof elem === "object"){
+                        let temps = elem.temperaments.map(e => e.temperament)
+                        return temps.includes(payload)
+                    }
                     let temps = elem.map(e => e.temperament)
                     return temps.includes(payload) 
                 } return null
@@ -56,13 +60,16 @@ export function reducer(state = initialState, {type, payload}){
         case FILTER_BY_CREATED:{ 
             // const createdFilter = payload === "dogsApi" ? state.allDogs.filter(elem => elem.createdInDB === false) :
             // state.allDogs.filter(elem => elem.createdInDB === true)
+            let allDog = state.allDogs
             let createdFilter = []
             if(payload === "dogsApi"){
-                createdFilter =  state.allDogs.filter(e => !e.createdInDB)
-            } else if(payload === "dogsDb"){ createdFilter = state.allDogs.filter(e => e.createdInDB === true)}
+                createdFilter =  allDog.filter(e => !e.createdInDB)
+            } else if(payload === "dogsDb"){ 
+                createdFilter = allDog.filter(e => e.createdInDB === true)
+            }
             return {
                 ...state,
-                allDogs: createdFilter
+                allDogs: payload === "allDogs" ? allDog : createdFilter
             }}
             
         case ORDER_BY_WEIGHT:{ 
@@ -80,7 +87,6 @@ export function reducer(state = initialState, {type, payload}){
                 if(x.weight_max < y.weight_max) return 1;
                 return 0
             })}
-            console.log(payload)
             return {
                 ...state,
                 allDogs: payload === 'dogs' ? state.allDogs : orderByWeightMax

@@ -1,10 +1,15 @@
 .content{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content:end;
-    max-width: 400px;
+    justify-content:end; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 80% 20%;
+    grid-template-areas: "filter sort btn"
+    "list list list";
+    height: 12vh;
 }
 
 .filter{
@@ -20,16 +25,25 @@
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     background-color: #f3f3f4;
+    grid-area: filter;
 }
 
 .title{
     font-size: 1.2em;
 }
 
+.list{
+    grid-area: list;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .item{
     display: block;
-    position: absolute;
-    top:14%;
+    margin-left: 15px;
 }
 
 .sort{
@@ -45,10 +59,10 @@
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #f3f3f4;
+    grid-area: sort;
 }
 
 .btn{
-    margin-left: 2%;
     padding: 1em 1em;
     font-size: 12px;
     letter-spacing: 2.5px;
@@ -59,6 +73,7 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    grid-area: btn;
 }
 
 

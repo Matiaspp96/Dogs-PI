@@ -22,8 +22,10 @@ export default function FilterSort() {
     }
 
     function handleFilterByCreated(event){
-        event.preventDefault();
         dispatch(filterByCreated(event.target.value))
+        if(event.target.value === "allDogs"){
+            dispatch(getAllDogs())
+        }
     }
 
     async function handleDelete(event){
@@ -58,7 +60,7 @@ export default function FilterSort() {
         <div className={s.filter}>
         <p className={s.title}>Filter by</p>
             <select onChange={e => handleFilterByTemperament(e)} >
-            <option value="filterByTemp">Temperaments</option>
+            <option>Temperaments</option>
             {temperaments && temperaments.map((e,i) => {
                 return(
                     <option value={e.temperament} key={i}>{e.temperament}</option>
@@ -66,15 +68,10 @@ export default function FilterSort() {
             })}
             </select>
             <select onChange={e => handleFilterByCreated(e)} >
-            <option value="dogsApi">Dogs DB</option>
+            <option value="allDogs">All Dogs</option>
+            <option value="dogsApi">Dogs APP</option>
             <option value="dogsDb">Yours Dogs</option>
             </select>
-            {temp && temp.map((temperament,i) => {
-                return(
-                    <button className={s.item} key={i} value={temperament} onClick={(e)=>handleDelete(e)}>
-                        {temperament}
-                    </button>
-                )})}
         </div>
         <div className={s.sort}>
             <p className={s.title}>Order by</p>
@@ -87,6 +84,16 @@ export default function FilterSort() {
                 <option value="asc">Min weight - Max</option>
             </select>
         </div>
+        <ul className={s.list}>
+            {temp && temp.map((temperament,i) => {
+                return(
+                <li key={i}>
+                    <button className={s.item} value={temperament} onClick={(e)=>handleDelete(e)}>
+                        {temperament}
+                    </button>
+                </li>
+            )})}    
+        </ul>
         <button className={s.btn} type="button" onClick={()=>handleRefresh()} >Remove Filters</button>
     </div>
   )
