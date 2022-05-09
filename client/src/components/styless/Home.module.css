@@ -1,7 +1,7 @@
 .Body{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    grid-template-rows: 7.5vh 12vh 1fr 10px;
+    grid-template-rows: 7.5vh 13vh 1fr 10px;
     grid-template-areas: 
     "header header header header"
     "navbar navbar navbar navbar"

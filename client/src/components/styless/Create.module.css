@@ -1,0 +1,237 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.section{
+    position: relative;
+    text-align: center;
+    margin-top: 0.5em;
+    text-decoration: underline #1488CC;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.form{
+    margin-top: 2em;
+    box-sizing: border-box;
+    padding: 1.5em;
+    width: 75%;
+    height: 30em;
+    line-height: 2;
+    background-color: #f3f3f4;
+    border-radius: 2em;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:start;
+}
+
+.title{
+    font-size: 1.5em;
+    height: min-content;
+    position: relative;
+}
+
+.subtitle{
+    height: min-content;
+    font-size: 1.1em;
+}
+
+hr {
+    height: 0.05em;
+    background-color:#1488CC;
+}
+
+.input_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, 3.5em);
+    grid-template-areas: "name lifespan"
+    "weight_max weight_min"
+    "height_max height_min"
+    "temps list"
+    "img list";
+}
+
+input {
+    width: 15em;
+    height: max-content;
+    line-height: 1.5em;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    outline: none;
+    background-color: #ffffff;
+    color: #0d0c22;
+    transition: .3s ease;
+}
+
+input::placeholder {
+    color: #9e9ea7;
+}
+
+input:focus, input:hover {
+    outline: none;
+    border-color: #1b55ab;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(13, 37, 105, 0.1);
+}
+
+label{
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.label_name{
+    grid-area: name;
+}
+.label_lifespan{
+    grid-area: lifespan;
+}
+.label_weight_max{
+    grid-area: weight_max;
+}
+.label_weight_min{
+    grid-area: weight_min;
+}
+.label_height_max{
+    grid-area: height_max;
+}
+.label_height_min{
+    grid-area: height_min;
+}
+.label_temperaments{
+    grid-area: temps;
+}
+.label_img{
+    grid-area: img;
+}
+
+select{
+    width: min-content;
+    height: max-content;
+    line-height: 1.5em;
+    padding: 0 0.5rem;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: .3s ease;
+}
+
+select::placeholder {
+    color: #9e9ea7;
+}
+
+select:hover {
+    outline: none;
+    border-color: #1b55ab;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(13, 37, 105, 0.1);
+}
+
+.label_p{
+    margin-right: 1em;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap:1em;
+    grid-area: list;
+}
+
+.item{
+    position: relative;
+    padding: 0.4em;
+    font-size: 0.8em;
+    max-width: max-content;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #9e9ea7;
+    background-color: #f3f3f4;
+    border-radius: 20px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    
+}
+
+.item:hover {
+    background-color: #1488CC;
+    box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
+    color: #fff;
+}
+
+.item:active {
+    transform: translateY(-1px);
+}
+
+.btn{
+    position: relative;
+    margin-top: 2em;
+    padding: 1em 1em;
+    max-width: max-content;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #9e9ea7;
+    background-color: #ffffff;
+    border-radius: 20px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.btn:hover {
+    background-color: #1488CC;
+    box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn_back{
+    position:absolute;
+    z-index: 2;
+    margin-top: 0.5em;
+    left: 2em;
+    padding: 1em 1em;
+    max-width: max-content;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #9e9ea7;
+    background-color: #f3f3f4;
+    border-radius: 20px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.btn_back:hover {
+    background-color: #1488CC;
+    box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
+    color: #fff;
+}
+
+.btn_back:active {
+    transform: translateY(-1px);
+}

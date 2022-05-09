@@ -5,11 +5,11 @@
     align-items: center;
     justify-content:end; */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 0.5fr;
     grid-template-rows: 80% 20%;
     grid-template-areas: "filter sort btn"
     "list list list";
-    height: 12vh;
+    height: 5.6em;
 }
 
 .filter{

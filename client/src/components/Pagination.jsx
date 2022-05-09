@@ -34,7 +34,7 @@ const Pagination = ({page,setPage,maxPage}) => {
     
     function handleChange(event){
         event.preventDefault();
-        setInput(event.target.value)
+        setInput(parseInt(event.target.value))
     }
 
 
