@@ -97,11 +97,8 @@
         0%, 100%{
             background-image: url('../../../public/1-background.jpg');
         }
-        33%{
+        50%{
             background-image: url('../../../public/2-background.jpg');
-        }
-        66%{
-            background-image: url('../../../public/3-background.jpg');
         }
     }
     

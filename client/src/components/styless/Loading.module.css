@@ -1,0 +1,19 @@
+.container{
+    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.dog{
+    width: 10em;
+    height: 7em;
+    background-image: url('../../../public/urban-dog.gif');
+    background-size: cover;
+}
+
+@keyframes animate {
+    0%, 100%{
+    }
+}

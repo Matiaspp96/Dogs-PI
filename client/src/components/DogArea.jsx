@@ -27,7 +27,7 @@ function DogArea(){
             <Pagination page={page} setPage={setPage} maxPage={maxPage} />
             </div>
             <div className={s.dogs_cards}>
-            {dogs ? dogs
+            {dogs.length !== 0 ? dogs
                 .slice((page - 1) * perPage,
                 (page - 1) * perPage + perPage)
                 .map(breed => {
