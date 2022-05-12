@@ -49,7 +49,7 @@ async function getTemperaments(req, res, next){
       try{
       let tempDb = await Temperament.findAll();
       if(!tempDb.length){
-        let temperaments = [];
+        // let temperaments = [];
         let temperamentsAPI = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
         .map(e=>{
           return {
@@ -59,16 +59,19 @@ async function getTemperaments(req, res, next){
         let temp = temperamentsAPI.filter(e=>e)
         .map(e=>e.temperament)
         .map(e => {
-          if(e) return e.split(",").map(a=>a.trim())});
-        temp.filter(e=>e).forEach(e=>e.forEach((e => {
-              if(!temperaments.includes(e)) temperaments.push(e)
-          })))
+          if(e) return e.split(",").map(a=>a.trim())})
+        .filter(e=>e)
+        // temp.filter(e=>e).forEach(e=>e.forEach((e => {
+        //       if(!temperaments.includes(e)) temperaments.push(e)
+        //   })))
+        let temperaments = [...new Set(temp.flat())]
         let newTemps = temperaments.map(a=>{
           let temperament = {
             temperament: a
           }
           return temperament
         })
+        console.log(newTemps)
         await Temperament.bulkCreate(newTemps)
       }
         return res.json(await Temperament.findAll({
