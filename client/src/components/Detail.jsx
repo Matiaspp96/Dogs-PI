@@ -27,8 +27,8 @@ export default function Detail() {
         <div className={s.detail}>
           <div className={s.info}>
           <p className={s.h3}>{dog.name}</p>
-          <p className={s.p}>Height: {dog.height_max} cm  - {dog.height_min} cm</p>
-          <p className={s.p}>Weight: {dog.weight_max} kg - {dog.weight_min} kg</p>
+          <p className={s.p}>Height: {dog.height_max}cm  - {dog.height_min}cm</p>
+          <p className={s.p}>Weight: {dog.weight_max}kg - {dog.weight_min}kg</p>
           <p className={s.p}>Life Span: {dog.life_span}</p>
           <p className={s.p}>Temperaments: </p>
           <p className={s.p}>{dog.createdInDB ? dog.temperaments.map(e => e.temperament).join(", "):

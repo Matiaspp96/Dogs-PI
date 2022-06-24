@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { filterByCreated, filterByTemperaments, getAllDogs, getAllTemperaments, orderByName, orderByWeight } from '../redux/actions';
 import s from './styless/FilterSort.module.css'
 
-export default function FilterSort() {
+export default function FilterSort({page,setPage}) {
     const dispatch = useDispatch();
     const temperaments = useSelector(state => state.temperaments);
     let [temp, setTemp] = useState([]);
+    const [input, setInput] = useState(1);
+
 
     useEffect(()=>{
         // dispatch(filterByTemperaments(temp[0]))
@@ -16,6 +18,8 @@ export default function FilterSort() {
     function handleFilterByTemperament(event){
         event.preventDefault();
         dispatch(filterByTemperaments(event.target.value))
+        setPage(1)
+        setInput(1)
         setTemp(
             temp = [...temp, event.target.value]
         )

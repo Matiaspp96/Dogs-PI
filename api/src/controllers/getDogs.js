@@ -10,13 +10,13 @@ async function getDogsAPI(){
         id: dog.id,
         name: dog.name,
         origin: dog.origin,
-        temperament: dog.temperament,
+        temperament: !dog.temperament ? 'Without info' : dog.temperament,
         life_span: dog.life_span,
         image: dog.image.url,
-        height_max: parseInt(dog.height.metric.slice(4).trim()),
-        height_min: parseInt(dog.height.metric.slice(0, 2).trim()),
-        weight_max: parseInt(dog.weight.metric.slice(4).trim()),
-        weight_min: parseInt(dog.weight.metric.slice(0,2).trim()),
+        height_max: !dog.height.metric ? 'No info of' : parseInt(dog.height.metric.slice(4).trim()),
+        height_min: !dog.height.metric ? 'No info of' : parseInt(dog.height.metric.slice(0, 2).trim()),
+        weight_max: dog.weight.metric.length < 3 ? parseInt(dog.weight.metric.slice(0,2).trim()) : parseInt(dog.weight.metric.slice(4).trim()),
+        weight_min: dog.weight.metric.length < 3 ? 'No info of ' : parseInt(dog.weight.metric.slice(0,2).trim()) ,
       }
     })
     return dogs
@@ -53,7 +53,7 @@ async function getTemperaments(req, res, next){
         let temperamentsAPI = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
         .map(e=>{
           return {
-            temperament: e.temperament,
+            temperament: !e.temperament ? 'Without info' : e.temperament ,
           }
         });
         let temp = temperamentsAPI.filter(e=>e)

@@ -7,6 +7,7 @@ import {
     FILTER_BY_CREATED,
     ORDER_BY_WEIGHT,
     ORDER_BY_NAME,
+    PAGINATION,
 } from './actions';
 
 let initialState = {
@@ -14,6 +15,7 @@ let initialState = {
     allDogs: [],
     temperaments: [],
     dogDetail: [],
+    pagination: 1
 }
 
 export function reducer(state = initialState, {type, payload}){
@@ -108,6 +110,11 @@ export function reducer(state = initialState, {type, payload}){
             return {
                 ...state,
                 allDogs: payload === 'dogs' ? state.allDogs : orderByNameBreed
+            }}
+        case PAGINATION:{
+            return {
+                ...state,
+                page: payload
             }}
         default: return state
     }
