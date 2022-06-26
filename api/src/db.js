@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
-  DATABASE_URL
+  DATABASE
 } = process.env;
 
 const uri = process.env.NODE_ENV === 'development' ? `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs` : `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`
