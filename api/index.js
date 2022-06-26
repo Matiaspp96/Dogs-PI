@@ -20,10 +20,11 @@
 const server = require('./src/app.js');
 const { chargeTemperaments, getTemperaments } = require('./src/controllers/getDogs.js');
 const { conn } = require('./src/db.js');
+const port = process.env.NODE_ENV === 'development' ? 3001 : process.env.PORT
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('% listening at 3001'); // eslint-disable-line no-console
+  server.listen(port, () => {
+    console.log(`listening at ${port}`); // eslint-disable-line no-console
   });
 });
