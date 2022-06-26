@@ -14,6 +14,9 @@ const router = Router();
 router.use('/dogs', Dogs)
 router.use('/temperaments', Temperaments)
 router.use('/dog', Dog)
+router.use('/', (req,res) =>{
+    res.send('<h1>API lenvantada</h1>')
+})
 
 
 module.exports = router;

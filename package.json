@@ -2,9 +2,14 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
+  "workspaces":[
+    "api",
+    "client"
+  ],
   "main": "index.js",
   "scripts": {
-    "start": "node ./api/app.js"
+    "dev": "npm run dev --workspace=api",
+    "start": "npm run start --workspace=api"
   },
   "author": "Matias Palomo",
   "license": "ISC",
