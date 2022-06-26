@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react';
 import s from './styless/Pagination.module.css'
 
 const Pagination = ({page,setPage,maxPage}) => {
     const [input, setInput] = useState(1);
+
+    useEffect(() => {
+        if(input > maxPage){
+            setInput(1)
+            setPage(1)
+        }
+    }, [maxPage])
 
     function nextPage(){
         setInput(input + 1)
@@ -34,16 +42,21 @@ const Pagination = ({page,setPage,maxPage}) => {
     
     function handleChange(event){
         event.preventDefault();
-        setInput(parseInt(event.target.value))
+        console.log(event.target.value)
+        if(isNaN(event.target.value) || event.target.value > Math.ceil(maxPage)){
+            setInput(1)
+        } else {
+            setInput(parseInt(event.target.value))
+        }
     }
 
 
   return (
     <div className={s.content}>
-        <button onClick={previousPage} disabled={ page < 1 || page === 1} >◄</button>
-        <input className={s.input} onChange={e=> handleChange(e)} onKeyDown={e=> handleKeyDown(e)} value={input} name='page' autoComplete='off' />
+        <button className={s.button} onClick={previousPage} disabled={ page < 1 || page === 1} >◄</button>
+        <input type='number' className={s.input} onChange={e=> handleChange(e)} onKeyDown={e=> handleKeyDown(e)} value={input} name='page' autoComplete='off' />
         <p>de {maxPage}</p>
-        <button onClick={nextPage} disabled={ page > maxPage || page === maxPage} >►</button>
+        <button className={s.button} onClick={nextPage} disabled={ page > maxPage || page === maxPage} >►</button>
     </div>
   )
 }

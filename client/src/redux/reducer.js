@@ -13,6 +13,7 @@ import {
 let initialState = {
     dogs: [],
     allDogs: [],
+    filter: [],
     temperaments: [],
     dogDetail: [],
     pagination: 1
@@ -24,7 +25,8 @@ export function reducer(state = initialState, {type, payload}){
             return {
                 ...state,
                 dogs: payload,
-                allDogs: payload
+                allDogs: payload,
+                // filter: payload
             }}
         case GET_TEMPERAMENTS:{
             return {
@@ -34,7 +36,7 @@ export function reducer(state = initialState, {type, payload}){
         case GET_DOGS_BY_NAME:{
             return {
                 ...state,
-                allDogs: payload
+                filter: payload
             }}
         case GET_DETAIL_DOG:{
             return {
@@ -42,7 +44,8 @@ export function reducer(state = initialState, {type, payload}){
                 dogDetail: payload
             }}
         case FILTER_BY_TEMPERAMENT:{
-            const byTemperaments = state.allDogs.filter(elem =>{
+            const filterDogs = state.allDogs
+            const byTemperaments = filterDogs.filter(elem =>{
                 if(elem.temperament){
                     return elem.temperament.includes(payload)
                 } else if (elem.temperaments){
@@ -56,7 +59,7 @@ export function reducer(state = initialState, {type, payload}){
             })
             return {
                 ...state,
-                allDogs: payload === "filterByTemp" ? state.allDogs : byTemperaments
+                filter: payload === "filterByTemp" ? state.allDogs : byTemperaments,
             }}
             
         case FILTER_BY_CREATED:{ 
@@ -71,11 +74,12 @@ export function reducer(state = initialState, {type, payload}){
             }
             return {
                 ...state,
-                allDogs: payload === "allDogs" ? allDog : createdFilter
+                filter: payload === "allDogs" ? allDog : createdFilter
             }}
             
         case ORDER_BY_WEIGHT:{ 
-            const filterDogs = state.dogs.filter(elem => elem.weight_max !== null)
+            const orderDogs = state.filter.length > 0 ? state.filter : state.allDogs
+            const filterDogs = orderDogs.filter(elem => elem.weight_max !== null)
             let orderByWeightMax = [];
             if(payload === 'asc'){
                 orderByWeightMax = filterDogs.sort((x,y) => {
@@ -91,25 +95,27 @@ export function reducer(state = initialState, {type, payload}){
             })}
             return {
                 ...state,
-                allDogs: payload === 'dogs' ? state.allDogs : orderByWeightMax
+                filter: payload === 'dogs' ? state.allDogs : orderByWeightMax
             }}
         case ORDER_BY_NAME:{ 
+            const orderDogs = state.filter.length > 0 ? state.filter : state.allDogs
             let orderByNameBreed = [];
             if(payload === 'asc'){
-                orderByNameBreed = [...state.allDogs].sort((x,y) => {
-                if(x.name.toLowerCase() < y.name.toLowerCase()) return -1
-                if(x.name.toLowerCase() > y.name.toLowerCase()) return 1
-                return 0
-            })}
+                orderByNameBreed = [...orderDogs].sort((x,y) => {
+                    if(x.name.toLowerCase() < y.name.toLowerCase()) return -1
+                    if(x.name.toLowerCase() > y.name.toLowerCase()) return 1
+                    return 0
+                })}
             if(payload === 'desc'){ 
-                orderByNameBreed = [...state.allDogs].sort((x,y) => {
+                orderByNameBreed = [...orderDogs].sort((x,y) => {
                 if(x.name.toLowerCase() > y.name.toLowerCase()) return -1
                 if(x.name.toLowerCase() < y.name.toLowerCase()) return 1
                 return 0
             })}  
+            console.log(orderByNameBreed, payload)
             return {
                 ...state,
-                allDogs: payload === 'dogs' ? state.allDogs : orderByNameBreed
+                filter: payload === 'dogs' ? state.allDogs : orderByNameBreed
             }}
         case PAGINATION:{
             return {

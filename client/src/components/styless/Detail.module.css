@@ -1,7 +1,17 @@
 .container{
+    background-image: url('../../../public/ssspot.svg');
+    height: 92.5vh;
+}
+
+.blur{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px); 
+    width: 100%;
+    height: 100%;
 }
 
 .detail{
@@ -44,6 +54,7 @@
     border-bottom-right-radius: 2em;
     border-top-right-radius: 2em;
 }
+
 .btn_back{
     position:absolute;
     z-index: 2;
@@ -71,4 +82,60 @@
 
 .btn_back:active {
     transform: translateY(-1px);
+}
+
+.btn_nextDog{
+    background-image: url('../../../public/right-arrow-svgrepo-com.svg');
+    background-size: cover;
+    width: 3rem;
+    height: 3rem;
+}
+
+.btn_backDog{
+    background-image: url('../../../public/left-arrow-svgrepo-com.svg');
+    background-size: cover;
+    width: 3rem;
+    height: 3rem;
+}
+
+.name{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+.footPrint{
+    background-image: url('../../../public/pawprint.png');
+    background-size: cover;
+    width: 2rem;
+    height: 2rem;
+}
+
+.height{
+    background-image: url('../../../public/altura.png');
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.weight{
+    background-image: url('../../../public/peso.png');
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.heart{
+    background-image: url('../../../public/heart-frequency.png');
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.bone{
+    background-image: url('../../../public/bone.png');
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
 }

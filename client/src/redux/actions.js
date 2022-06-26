@@ -10,9 +10,11 @@ export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const PAGINATION = 'PAGINATION'
 
+export const BASEURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : `${process.env.API_URL}`
+
 export function getAllDogs(){
     return function (dispatch){
-        return axios('http://localhost:3001/dogs')
+        return axios(`${BASEURL}/dogs`)
         .then(res => dispatch({type: GET_DOGS , payload: res.data}))
         .catch(err => console.log(err))
     }
@@ -21,7 +23,7 @@ export function getAllDogs(){
 
 export function getDogByName(name){
     return function (dispatch){
-        return axios(`http://localhost:3001/dogs?name=${name}`)
+        return axios(`${BASEURL}/dogs?name=${name}`)
         .then(res => dispatch({type: GET_DOGS_BY_NAME , payload: res.data}))
         .catch(err => console.log(err))
     }
@@ -29,7 +31,7 @@ export function getDogByName(name){
 
 export function getDetailDog(id){
     return function (dispatch){
-        return axios(`http://localhost:3001/dogs/${id}`)
+        return axios(`${BASEURL}/dogs/${id}`)
         .then(res => dispatch({type: GET_DETAIL_DOG , payload: res.data}))
         .catch(err => console.log(err))
     }
@@ -37,7 +39,7 @@ export function getDetailDog(id){
 
 export function getAllTemperaments(){
     return function (dispatch){
-        return axios('http://localhost:3001/temperaments')
+        return axios(`${BASEURL}/temperaments`)
         .then(res => dispatch({type: GET_TEMPERAMENTS , payload: res.data}))
         .catch(err => console.log(err))
     }
@@ -45,7 +47,7 @@ export function getAllTemperaments(){
 
 export function createDog(dog){
     return function (dispatch){
-        axios.post('http://localhost:3001/dog', dog)
+        axios.post(`${BASEURL}/dog`, dog)
         .then(res => res.data)
         .catch(err => console.log(err))
     }

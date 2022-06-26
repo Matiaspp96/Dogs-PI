@@ -9,6 +9,8 @@
 
 .pagination{
     grid-area: pagination;
+    display: flex;
+    justify-content: center;
 }
 
 .dogs_cards{

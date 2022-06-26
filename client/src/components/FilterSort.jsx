@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { filterByCreated, filterByTemperaments, getAllDogs, getAllTemperaments, orderByName, orderByWeight } from '../redux/actions';
 import s from './styless/FilterSort.module.css'
 
-export default function FilterSort({page,setPage}) {
+export default function FilterSort() {
     const dispatch = useDispatch();
     const temperaments = useSelector(state => state.temperaments);
     let [temp, setTemp] = useState([]);
-    const [input, setInput] = useState(1);
 
 
     useEffect(()=>{
@@ -18,8 +17,6 @@ export default function FilterSort({page,setPage}) {
     function handleFilterByTemperament(event){
         event.preventDefault();
         dispatch(filterByTemperaments(event.target.value))
-        setPage(1)
-        setInput(1)
         setTemp(
             temp = [...temp, event.target.value]
         )
@@ -36,7 +33,7 @@ export default function FilterSort({page,setPage}) {
         setTemp(
             temp = temp.filter(e => event.target.value !== e)
         )
-        if(!temp.length){dispatch(getAllDogs())}
+        // if(!temp.length){dispatch(getAllDogs())}
         // if(temp.length){
         //     let firstTemperament = await temp[0]
         //     console.log(firstTemperament)
@@ -65,6 +62,7 @@ export default function FilterSort({page,setPage}) {
         <p className={s.title}>Filter by</p>
             <select onChange={e => handleFilterByTemperament(e)} >
             <option>Temperaments</option>
+            <option value="filterByTemp">All Temperaments</option>
             {temperaments && temperaments.map((e,i) => {
                 return(
                     <option value={e.temperament} key={i}>{e.temperament}</option>
@@ -88,7 +86,7 @@ export default function FilterSort({page,setPage}) {
                 <option value="asc">Min weight - Max</option>
             </select>
         </div>
-        <ul className={s.list}>
+        {/* <ul className={s.list}>
             {temp && temp.map((temperament,i) => {
                 return(
                 <li key={i}>
@@ -97,7 +95,7 @@ export default function FilterSort({page,setPage}) {
                     </button>
                 </li>
             )})}    
-        </ul>
+        </ul> */}
         <button className={s.btn} type="button" onClick={()=>handleRefresh()} >Remove Filters</button>
     </div>
   )

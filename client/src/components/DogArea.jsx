@@ -9,10 +9,14 @@ import s from './styless/DogArea.module.css'
 
 function DogArea(){
     const dispatch = useDispatch()
-    const dogs = useSelector(state => state.allDogs)
+    const dogsFiltrados = useSelector(state => state.filter)
+    const allDogs = useSelector(state => state.allDogs)
+    let dogs = dogsFiltrados.length > 0 ? dogsFiltrados : allDogs
     useEffect(()=>{
         dispatch(getAllDogs())
     }, [dispatch])
+
+    console.log(allDogs.length)
 
     const [page, setPage] = useState(1);
     const [perPage] = useState(8);

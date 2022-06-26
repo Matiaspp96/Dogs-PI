@@ -1,14 +1,23 @@
 .container{
+    height: max-content;
+    background-image: url('../../../public/ssspot.svg');
+}
+
+.blur{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px); 
+    height: 92.5vh;
 }
 
 .section{
     position: relative;
     text-align: center;
     margin-top: 0.5em;
+    background: rgba(255, 255, 255, 0.2);
     text-decoration: underline #1488CC;
     font-size: 2.5rem;
     font-weight: 800;
@@ -19,7 +28,7 @@
     box-sizing: border-box;
     padding: 1.5em;
     width: 75%;
-    height: 30em;
+    height: max-content;
     line-height: 2;
     background-color: #f3f3f4;
     border-radius: 2em;
@@ -55,10 +64,12 @@ hr {
     "height_max height_min"
     "temps list"
     "img list";
+    width: 100%;
+    row-gap: 1.5rem;
 }
 
 input {
-    width: 15em;
+    width: 70%;
     height: max-content;
     line-height: 1.5em;
     padding: 0 1rem;
@@ -84,9 +95,9 @@ input:focus, input:hover {
 label{
     font-size: 1em;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
     justify-content: flex-start;
     align-content: flex-start;
 }
@@ -235,4 +246,9 @@ select:hover {
 
 .btn_back:active {
     transform: translateY(-1px);
+}
+
+.error{
+    font-size: 0.8em;
+    color: red;
 }

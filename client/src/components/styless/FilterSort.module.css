@@ -5,7 +5,7 @@
     align-items: center;
     justify-content:end; */
     display: grid;
-    grid-template-columns: 1fr 1fr 0.5fr;
+    grid-template-columns: auto auto 20%;
     grid-template-rows: 80% 20%;
     grid-template-areas: "filter sort btn"
     "list list list";
@@ -43,7 +43,18 @@
 
 .item{
     display: block;
+    padding: 0 0.5rem;
+    border-radius: 15px;
     margin-left: 15px;
+    border: 2px solid transparent;
+    z-index: 5;
+}
+
+.item:focus, item:hover {
+    outline: none;
+    border-color: #1b55ab;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(13, 37, 105, 0.1);
 }
 
 .sort{
@@ -63,7 +74,7 @@
 }
 
 .btn{
-    padding: 1em 1em;
+    width: auto;
     font-size: 12px;
     letter-spacing: 2.5px;
     font-weight: 500;

@@ -5,6 +5,8 @@
     align-items: center;
     justify-content: center;
     font-size: 1em;
+    width: fit-content;
+    z-index: 1;
 }
 
 .input{
@@ -23,7 +25,26 @@
     color: #9e9ea7;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .input:focus, input:hover {
+    outline: none;
+    border-color: #1b55ab;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(13, 37, 105, 0.1);
+}
+
+.button{
+    border-radius: 15px;
+    border: 2px solid transparent;
+    width: 2rem;
+}
+
+.button:focus, button:hover {
     outline: none;
     border-color: #1b55ab;
     background-color: #fff;
