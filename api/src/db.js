@@ -10,8 +10,13 @@ const {
 const uri = process.env.NODE_ENV === 'development' ? `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs` : `${DATABASE_URL}`
 console.log(uri)
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
-  logging: false, // set to console.log to see the raw SQL queries
+  // logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  dialect: 'postgres',
+  ssl: true,
+  dialectOptions: {
+    ssl: true
+  }
 });
 const basename = path.basename(__filename);
 
