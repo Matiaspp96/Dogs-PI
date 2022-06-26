@@ -9,8 +9,9 @@ export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT'
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const PAGINATION = 'PAGINATION'
+const urlApi = 'https://project-dogs-app.herokuapp.com'
 
-export const BASEURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : `${process.env.API_URL}`
+export const BASEURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : urlApi
 
 console.log('baseURL', BASEURL)
 console.log('.env', process.env.API_URL)
