@@ -12,6 +12,7 @@ export const PAGINATION = 'PAGINATION'
 
 export const BASEURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : `${process.env.API_URL}`
 
+console.log(BASEURL)
 export function getAllDogs(){
     return function (dispatch){
         return axios(`${BASEURL}/dogs`)
