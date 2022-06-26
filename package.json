@@ -9,7 +9,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run dev --workspace=api",
-    "start": "npm run start --workspace=api"
+    "start": "npm start --workspace=api",
+    "build": "npm run build --workspace=client"
   },
   "author": "Matias Palomo",
   "license": "ISC",
