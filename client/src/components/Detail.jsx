@@ -26,8 +26,6 @@ export default function Detail() {
       }
     };
 
-    console.log(dog)
-
     useEffect(() => {
         dispatch(getDetailDog(id))
     }, [dispatch, id])

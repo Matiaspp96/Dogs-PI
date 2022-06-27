@@ -16,8 +16,43 @@
     grid-area: header;
 }
 
-.navbar{
-    grid-area: navbar;
+@media only screen and (max-width: 640px){
+    .navbar{
+        grid-area: navbar;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }    
+
+    .Body{
+        display: grid;
+        width: 100vw;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: 7.5vh auto 1fr 10px;
+        grid-template-areas: 
+        "header header header header"
+        "navbar navbar navbar navbar"
+        "dog_area dog_area dog_area dog_area"
+        ;
+        background: #ffffff;
+    }
+}
+@media only screen and (min-width: 640px){
+    .navbar{
+        grid-area: navbar;
+    }
+
+    .Body{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: 7.5vh auto 1fr 10px;
+        grid-template-areas: 
+        "header header header header"
+        "navbar navbar navbar navbar"
+        "dog_area dog_area dog_area dog_area"
+        ;
+        background: #ffffff;
+    }
 }
 
 .dog_area{

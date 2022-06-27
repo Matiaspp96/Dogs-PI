@@ -71,7 +71,6 @@ async function getTemperaments(req, res, next){
           }
           return temperament
         })
-        console.log(newTemps)
         await Temperament.bulkCreate(newTemps)
       }
         return res.json(await Temperament.findAll({

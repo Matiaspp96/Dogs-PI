@@ -8,14 +8,14 @@ const {
 } = process.env;
 
 const uri = process.env.NODE_ENV === 'development' ? `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs` : `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`
-console.log(uri)
+
 const sequelize = new Sequelize(`${uri}`, {
-  // logging: false, // set to console.log to see the raw SQL queries
+  logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   dialect: 'postgres',
   ssl: true,
   dialectOptions: {
-    ssl: {
+    ssl: process.env.NODE_ENV === 'development' ? false : {
       require: true,
       rejectUnauthorized: false
     }

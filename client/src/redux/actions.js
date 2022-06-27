@@ -13,8 +13,6 @@ const urlApi = 'https://project-dogs-app.herokuapp.com'
 
 export const BASEURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : urlApi
 
-console.log('baseURL', BASEURL)
-console.log('.env', process.env.API_URL)
 export function getAllDogs(){
     return function (dispatch){
         return axios(`${BASEURL}/dogs`)

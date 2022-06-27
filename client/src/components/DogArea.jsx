@@ -16,8 +16,6 @@ function DogArea(){
         dispatch(getAllDogs())
     }, [dispatch])
 
-    console.log(dogs)
-
     const [page, setPage] = useState(1);
     const [perPage] = useState(8);
 
