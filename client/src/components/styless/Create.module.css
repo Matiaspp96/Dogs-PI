@@ -1,3 +1,123 @@
+@media only screen and (max-width: 640px){
+    .section{
+        position: relative;
+        text-align: center;
+        margin-top: 1em;
+        background: rgba(255, 255, 255, 0.2);
+        text-decoration: underline #1488CC;
+        font-size: 2.5rem;
+        font-weight: 800;
+    }
+
+    .form{
+        margin: 2em;
+        box-sizing: border-box;
+        padding: 1.5em;
+        width: 75%;
+        height: max-content;
+        line-height: 2;
+        background-color: #f3f3f4;
+        border-radius: 2em;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .input_container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        row-gap: 1rem;
+    }
+
+    .btn{
+        position: relative;
+        margin-top: 2em;
+        padding: 1em 1em;
+        max-width: max-content;
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #9e9ea7;
+        background-color: #ffffff;
+        border-radius: 20px;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .section{
+        position: relative;
+        text-align: center;
+        margin-top: 0.5em;
+        background: rgba(255, 255, 255, 0.2);
+        text-decoration: underline #1488CC;
+        font-size: 2.5rem;
+        font-weight: 800;
+    }
+
+    .form{
+        margin: 2em;
+        box-sizing: border-box;
+        padding: 1.5em;
+        width: 75%;
+        height: max-content;
+        line-height: 2;
+        background-color: #f3f3f4;
+        border-radius: 2em;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .input_container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 3.5em);
+        grid-template-areas: "name lifespan"
+        "weight_max weight_min"
+        "height_max height_min"
+        "temps list"
+        "img list";
+        width: 100%;
+        row-gap: 1.5rem;
+    }
+
+    .btn{
+        position: relative;
+        margin-top: 2em;
+        padding: 1em 1em;
+        max-width: max-content;
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #9e9ea7;
+        background-color: #ffffff;
+        border-radius: 20px;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    
+    .btn:hover {
+        background-color: #1488CC;
+        box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+    
+    .btn:active {
+        transform: translateY(-1px);
+    }
+}
+
 .container{
     height: max-content;
     background-image: url('../../../public/ssspot.svg');
@@ -6,37 +126,11 @@
 .blur{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(2px); 
-    height: 92.5vh;
-}
-
-.section{
-    position: relative;
-    text-align: center;
-    margin-top: 0.5em;
-    background: rgba(255, 255, 255, 0.2);
-    text-decoration: underline #1488CC;
-    font-size: 2.5rem;
-    font-weight: 800;
-}
-
-.form{
-    margin-top: 2em;
-    box-sizing: border-box;
-    padding: 1.5em;
-    width: 75%;
     height: max-content;
-    line-height: 2;
-    background-color: #f3f3f4;
-    border-radius: 2em;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: flex-start;
 }
 
 .title{
@@ -53,19 +147,6 @@
 hr {
     height: 0.05em;
     background-color:#1488CC;
-}
-
-.input_container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, 3.5em);
-    grid-template-areas: "name lifespan"
-    "weight_max weight_min"
-    "height_max height_min"
-    "temps list"
-    "img list";
-    width: 100%;
-    row-gap: 1.5rem;
 }
 
 input {
@@ -188,34 +269,6 @@ select:hover {
 }
 
 .item:active {
-    transform: translateY(-1px);
-}
-
-.btn{
-    position: relative;
-    margin-top: 2em;
-    padding: 1em 1em;
-    max-width: max-content;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #9e9ea7;
-    background-color: #ffffff;
-    border-radius: 20px;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-}
-
-
-.btn:hover {
-    background-color: #1488CC;
-    box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-.btn:active {
     transform: translateY(-1px);
 }
 

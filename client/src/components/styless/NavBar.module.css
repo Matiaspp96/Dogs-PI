@@ -1,19 +1,17 @@
 @media only screen and (max-width: 640px){
-    .navbar{
-        /* display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+    .navbarP{
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content:end; */
+        margin-top: 1rem;
+    }
+
+    .navbar{
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 1rem;
         row-gap: 1rem;
-        /* grid-template-row: auto auto 20%;
-        grid-template-areas: "filter sort btn"
-        "list list list";
-        height: 5.6em; */
     }
 
     .link_parent{

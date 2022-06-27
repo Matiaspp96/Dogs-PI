@@ -12,6 +12,7 @@ function DogArea(){
     const dogsFiltrados = useSelector(state => state.filter)
     const allDogs = useSelector(state => state.allDogs)
     let dogs = dogsFiltrados.length > 0 ? dogsFiltrados : allDogs
+    
     useEffect(()=>{
         dispatch(getAllDogs())
     }, [dispatch])

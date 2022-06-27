@@ -1,141 +1,287 @@
-.container{
-    background-image: url('../../../public/ssspot.svg');
-    height: 92.5vh;
+@media only screen and (max-width: 640px){
+    .container{
+        background-image: url('../../../public/ssspot.svg');
+        height: max-content;
+    }
+    
+    .blur{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(2px); 
+        width: 100%;
+        height: max-content;
+        align-items: center;
+    }
+    
+    .detail{
+        margin: 4rem 0;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        width: 85vw;
+        background-color: #f3f3f4;
+        border-radius: 2em;
+        box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.7);
+    }
+    
+    
+    .info{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 2em 1em;
+        max-height: 30em;
+        align-content:stretch;
+    }
+    
+    .h3{
+        font-size: 1.5em;
+        font-weight: 700;
+        line-height: normal;
+        box-sizing: content-box;
+    }
+    
+    .p{
+        font-size: 1.2em;
+    }
+    
+    .image {
+        width: 100%;
+        height: 100%;
+        border-bottom-left-radius:  2em;
+        border-bottom-right-radius:  2em;
+    }
+    
+    .btn_back{
+        position:absolute;
+        z-index: 2;
+        margin-top: 0.5em;
+        left: 2em;
+        padding: 1em 1em;
+        max-width: max-content;
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #9e9ea7;
+        background-color: #f3f3f4;
+        border-radius: 20px;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    
+    .btn_back:hover {
+        background-color: #1488CC;
+        box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
+        color: #fff;
+    }
+    
+    .btn_back:active {
+        transform: translateY(-1px);
+    }
+    
+    .btn_nextDog{
+        background-image: url('../../../public/right-arrow-svgrepo-com.svg');
+        background-size: cover;
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .btn_backDog{
+        background-image: url('../../../public/left-arrow-svgrepo-com.svg');
+        background-size: cover;
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .name{
+        display: flex;
+        flex-direction: row;
+        column-gap: 1rem;
+        align-items: center;
+    }
+    
+    .footPrint{
+        background-image: url('../../../public/pawprint.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .height{
+        background-image: url('../../../public/altura.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .weight{
+        background-image: url('../../../public/peso.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .heart{
+        background-image: url('../../../public/heart-frequency.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .bone{
+        background-image: url('../../../public/bone.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
 
-.blur{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(2px); 
-    width: 100%;
-    height: 100%;
-}
 
-.detail{
-    margin-top: 5em;
-    box-sizing: border-box;
-    max-width: 80em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 33em;
-    background-color: #f3f3f4;
-    border-radius: 2em;
-    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.7);
-}
-
-
-.info{
-    display: grid;
-    grid-auto-rows: min-content;
-    gap: 1em;
-    margin: 2em 2em 0 2em;
-    max-height: 30em;
-    align-content:stretch;
-}
-
-.h3{
-    font-size: 3em;
-    font-weight: 700;
-    line-height: normal;
-    white-space: wrap;
-    box-sizing: content-box;
-}
-
-.p{
-    font-size: 1.2em;
-}
-
-.image {
-    width: 40em;
-    height: 33em;
-    border-bottom-right-radius: 2em;
-    border-top-right-radius: 2em;
-}
-
-.btn_back{
-    position:absolute;
-    z-index: 2;
-    margin-top: 0.5em;
-    left: 2em;
-    padding: 1em 1em;
-    max-width: max-content;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #9e9ea7;
-    background-color: #f3f3f4;
-    border-radius: 20px;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-}
-
-
-.btn_back:hover {
-    background-color: #1488CC;
-    box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
-    color: #fff;
-}
-
-.btn_back:active {
-    transform: translateY(-1px);
-}
-
-.btn_nextDog{
-    background-image: url('../../../public/right-arrow-svgrepo-com.svg');
-    background-size: cover;
-    width: 3rem;
-    height: 3rem;
-}
-
-.btn_backDog{
-    background-image: url('../../../public/left-arrow-svgrepo-com.svg');
-    background-size: cover;
-    width: 3rem;
-    height: 3rem;
-}
-
-.name{
-    display: flex;
-    flex-direction: row;
-    column-gap: 1rem;
-    align-items: center;
-}
-
-.footPrint{
-    background-image: url('../../../public/pawprint.png');
-    background-size: cover;
-    width: 2rem;
-    height: 2rem;
-}
-
-.height{
-    background-image: url('../../../public/altura.png');
-    background-size: cover;
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.weight{
-    background-image: url('../../../public/peso.png');
-    background-size: cover;
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.heart{
-    background-image: url('../../../public/heart-frequency.png');
-    background-size: cover;
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.bone{
-    background-image: url('../../../public/bone.png');
-    background-size: cover;
-    width: 1.5rem;
-    height: 1.5rem;
+@media only screen and (min-width: 640px){
+    .container{
+        background-image: url('../../../public/ssspot.svg');
+        height: 92.5vh;
+    }
+    
+    .blur{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(2px); 
+        width: 100%;
+        height: 100%;
+    }
+    
+    .detail{
+        margin-top: 5em;
+        box-sizing: border-box;
+        max-width: 80em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 33em;
+        background-color: #f3f3f4;
+        border-radius: 2em;
+        box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.7);
+    }
+    
+    
+    .info{
+        display: grid;
+        grid-auto-rows: min-content;
+        gap: 1em;
+        margin: 2em 2em 0 2em;
+        max-height: 30em;
+        align-content:stretch;
+    }
+    
+    .h3{
+        font-size: 2.3em;
+        font-weight: 700;
+        line-height: normal;
+        white-space: wrap;
+        box-sizing: content-box;
+    }
+    
+    .p{
+        font-size: 1.2em;
+    }
+    
+    .image {
+        width: 40em;
+        height: 33em;
+        border-bottom-right-radius: 2em;
+        border-top-right-radius: 2em;
+    }
+    
+    .btn_back{
+        position:absolute;
+        z-index: 2;
+        margin-top: 0.5em;
+        left: 2em;
+        padding: 1em 1em;
+        max-width: max-content;
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #9e9ea7;
+        background-color: #f3f3f4;
+        border-radius: 20px;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    
+    .btn_back:hover {
+        background-color: #1488CC;
+        box-shadow: 0px 15px 20px rgba(8, 29, 94, 0.4);
+        color: #fff;
+    }
+    
+    .btn_back:active {
+        transform: translateY(-1px);
+    }
+    
+    .btn_nextDog{
+        background-image: url('../../../public/right-arrow-svgrepo-com.svg');
+        background-size: cover;
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .btn_backDog{
+        background-image: url('../../../public/left-arrow-svgrepo-com.svg');
+        background-size: cover;
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .name{
+        display: flex;
+        flex-direction: row;
+        margin: 0.8rem 0;
+        column-gap: 1rem;
+        align-items: center;
+    }
+    
+    .footPrint{
+        background-image: url('../../../public/pawprint.png');
+        background-size: cover;
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .height{
+        background-image: url('../../../public/altura.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .weight{
+        background-image: url('../../../public/peso.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .heart{
+        background-image: url('../../../public/heart-frequency.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .bone{
+        background-image: url('../../../public/bone.png');
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }

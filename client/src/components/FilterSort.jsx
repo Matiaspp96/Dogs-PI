@@ -40,8 +40,10 @@ export default function FilterSort() {
         //     dispatch(filterByTemperaments(firstTemperament))
         // }
     }
+
     function handleRefresh(){
         dispatch(getAllDogs())
+        dispatch(filterByCreated('allDogs'))
         setTemp([])
     }
 

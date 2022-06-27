@@ -29,9 +29,8 @@ export default function NavBar(){
     const toggleNav = () => {
         setToggleMenu(!toggleMenu)
     }
-    console.log(screenWidth)
     return(
-        <div className={s.navbar}>
+        <div className={s.navbarP}>
             {screenWidth > 640 ? null :
                 <div onClick={toggleNav}>
                     <Hamburguer toggleMenu={toggleMenu}/>

@@ -10,9 +10,9 @@ export default function Card({ id, name, image, temperament, weight_max, weight_
           <p className={s.text_title}>{name}</p>
           <div className={s.text_body}>
             <p>{temperament}</p>
-            <p>Max: {weight_max}Kg</p>
-            <p>Min: {weight_min}Kg</p>
-            <p>See more...</p>
+            <p className={s.text_info}>Max: {weight_max}Kg</p>
+            <p className={s.text_info}>Min: {weight_min}Kg</p>
+            <p className={s.text_info}>See more...</p>
           </div>
         </div>
       </div>

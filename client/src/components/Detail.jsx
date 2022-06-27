@@ -2,7 +2,7 @@ import React from 'react'
 import { getDetailDog } from '../redux/actions'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Loading from './Loading';
@@ -13,24 +13,26 @@ export default function Detail() {
     const filter = useSelector(state => state.filter);
     const dispatch = useDispatch();
     const {id} = useParams();
+    const location = useLocation()
     const history = useHistory();
-    // let dogName = dog.name
-    // dogName = dogName.substr(0, Math.min(dogName.length, dogName.lastIndexOf(" ")))
 
-    document.body.onkeydown = function(e){
-      // alert(String.fromCharCode(e.keyCode)+" --> "+e.keyCode);
-      if(e.keyCode === 37){
-        history.push(`/dogs/${Number(id) - 1}`)
-      } else if(e.keyCode === 39){
-        history.push(`/dogs/${Number(id) + 1}`)
-      }
-    };
+
+    if(id && location.pathname.includes('dogs')){
+      document.body.onkeydown = function(e){
+        // alert(String.fromCharCode(e.keyCode)+" --> "+e.keyCode);
+        if(e.keyCode === 37 && Number(id) > 1){
+          history.push(`/dogs/${Number(id) - 1}`)
+        } else if(e.keyCode === 39 && Number(id) < 264){
+          history.push(`/dogs/${Number(id) + 1}`)
+        }
+      };
+    }
 
     useEffect(() => {
         dispatch(getDetailDog(id))
     }, [dispatch, id])
 
-
+    
         return (
     <div>
       <Header />
@@ -45,7 +47,7 @@ export default function Detail() {
             <div className={s.info}>
             <span className={s.name}>
               <svg className={s.footPrint}></svg>
-              <p className={s.h3}>{dog.name.substr(0, 18)}</p>
+              <p className={s.h3}>{dog.name.split(" ").splice(0,2).join(" ")}</p>
             </span>
             <span className={s.name}>
               <svg className={s.height}></svg>
