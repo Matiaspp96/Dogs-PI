@@ -1,4 +1,19 @@
 @media only screen and (max-width: 640px){
+    .container{
+        height: max-content;
+        background-image: url('../../../public/ssspot.svg');
+    }
+    
+    .blur{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(2px); 
+        height: max-content;
+    }
+
     .section{
         position: relative;
         text-align: center;
@@ -50,6 +65,23 @@
 }
 
 @media only screen and (min-width: 640px){
+    .container{
+        height: max-content;
+        min-height: 92.5vh;
+        background-image: url('../../../public/ssspot.svg');
+    }
+    
+    .blur{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(2px); 
+        height: max-content;
+        min-height: 92.5vh;
+    }
+
     .section{
         position: relative;
         text-align: center;
@@ -116,21 +148,6 @@
     .btn:active {
         transform: translateY(-1px);
     }
-}
-
-.container{
-    height: max-content;
-    background-image: url('../../../public/ssspot.svg');
-}
-
-.blur{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(2px); 
-    height: max-content;
 }
 
 .title{

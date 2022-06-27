@@ -16,8 +16,7 @@ export default function Detail() {
     const location = useLocation()
     const history = useHistory();
 
-
-    if(id && location.pathname.includes('dogs')){
+    if(id.length < 4  && location.pathname.includes('dogs/')){
       document.body.onkeydown = function(e){
         // alert(String.fromCharCode(e.keyCode)+" --> "+e.keyCode);
         if(e.keyCode === 37 && Number(id) > 1){
