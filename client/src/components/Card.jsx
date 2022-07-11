@@ -12,7 +12,7 @@ export default function Card({ id, name, image, temperament, weight_max, weight_
             <p>{temperament}</p>
             <p className={s.text_info}>Max: {weight_max}Kg</p>
             <p className={s.text_info}>Min: {weight_min}Kg</p>
-            <p className={s.text_info}>See more..</p>
+            <p className={s.text_info}>See more...</p>
           </div>
         </div>
       </div>
