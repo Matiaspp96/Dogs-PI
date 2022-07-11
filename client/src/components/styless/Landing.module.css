@@ -97,10 +97,10 @@
 
     @keyframes animate {
         0%, 100%{
-            background-image: url('../../../public/2-background.webp');
+            background-image: url('../../../public/2-background.png');
         }
         50%{
-            background-image: url('../../../public/1-background.webp');
+            background-image: url('../../../public/1-background.png');
         }
     }
     
