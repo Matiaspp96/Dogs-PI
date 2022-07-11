@@ -111,15 +111,15 @@ export function reducer(state = initialState, { type, payload }) {
             let orderByNameBreed = [];
             if (payload === 'asc') {
                 orderByNameBreed = [...orderDogs].sort((x, y) => {
-                    if (x.name < y.name) return -1
-                    if (x.name > y.name) return 1
+                    if (x.name.toLowerCase() < y.name.toLowerCase()) return -1
+                    if (x.name.toLowerCase() > y.name.toLowerCase()) return 1
                     return 0
                 })
             }
             if (payload === 'desc') {
                 orderByNameBreed = [...orderDogs].sort((x, y) => {
-                    if (x.name > y.name) return -1
-                    if (x.name < y.name) return 1
+                    if (x.name.toLowerCase() > y.name.toLowerCase()) return -1
+                    if (x.name.toLowerCase() < y.name.toLowerCase()) return 1
                     return 0
                 })
             }
