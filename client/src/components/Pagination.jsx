@@ -10,7 +10,7 @@ const Pagination = ({page,setPage,maxPage}) => {
             setInput(1)
             setPage(1)
         }
-    }, [maxPage])
+    }, [maxPage, input, setPage])
 
     function nextPage(){
         setInput(input + 1)

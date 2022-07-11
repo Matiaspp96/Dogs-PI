@@ -29,17 +29,17 @@ export default function FilterSort() {
         }
     }
 
-    async function handleDelete(event){
-        setTemp(
-            temp = temp.filter(e => event.target.value !== e)
-        )
-        // if(!temp.length){dispatch(getAllDogs())}
-        // if(temp.length){
-        //     let firstTemperament = await temp[0]
-        //     console.log(firstTemperament)
-        //     dispatch(filterByTemperaments(firstTemperament))
-        // }
-    }
+    // async function handleDelete(event){
+    //     setTemp(
+    //         temp = temp.filter(e => event.target.value !== e)
+    //     )
+    //     // if(!temp.length){dispatch(getAllDogs())}
+    //     // if(temp.length){
+    //     //     let firstTemperament = await temp[0]
+    //     //     console.log(firstTemperament)
+    //     //     dispatch(filterByTemperaments(firstTemperament))
+    //     // }
+    // }
 
     function handleRefresh(){
         dispatch(getAllDogs())
