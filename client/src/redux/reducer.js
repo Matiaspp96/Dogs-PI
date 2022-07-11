@@ -106,29 +106,29 @@ export function reducer(state = initialState, { type, payload }) {
         //         filter: payload === 'dogs' ? state.allDogs : orderByWeightMax
         //     }
         // }
-        case ORDER_BY_NAME: {
-            const orderDogs = state.filter.length > 0 ? state.filter : state.allDogs
-            let orderByNameBreed = [];
-            if (payload === 'asc') {
-                orderByNameBreed = [...orderDogs].sort((x, y) => {
-                    if (x.name.toLowerCase() < y.name.toLowerCase()) return -1
-                    if (x.name.toLowerCase() > y.name.toLowerCase()) return 1
-                    return 0
-                })
-            }
-            if (payload === 'desc') {
-                orderByNameBreed = [...orderDogs].sort((x, y) => {
-                    if (x.name.toLowerCase() > y.name.toLowerCase()) return -1
-                    if (x.name.toLowerCase() < y.name.toLowerCase()) return 1
-                    return 0
-                })
-            }
-            console.log(orderByNameBreed, payload)
-            return {
-                ...state,
-                filter: payload === 'dogs' ? state.allDogs : orderByNameBreed
-            }
-        }
+        // case ORDER_BY_NAME: {
+        //     const orderDogs = state.filter.length > 0 ? state.filter : state.allDogs
+        //     let orderByNameBreed = [];
+        //     if (payload === 'asc') {
+        //         orderByNameBreed = [...orderDogs].sort((x, y) => {
+        //             if (x.name.toLowerCase() < y.name.toLowerCase()) return -1
+        //             if (x.name.toLowerCase() > y.name.toLowerCase()) return 1
+        //             return 0
+        //         })
+        //     }
+        //     if (payload === 'desc') {
+        //         orderByNameBreed = [...orderDogs].sort((x, y) => {
+        //             if (x.name.toLowerCase() > y.name.toLowerCase()) return -1
+        //             if (x.name.toLowerCase() < y.name.toLowerCase()) return 1
+        //             return 0
+        //         })
+        //     }
+        //     console.log(orderByNameBreed, payload)
+        //     return {
+        //         ...state,
+        //         filter: payload === 'dogs' ? state.allDogs : orderByNameBreed
+        //     }
+        // }
         case PAGINATION: {
             return {
                 ...state,
